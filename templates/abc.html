@@ -1,0 +1,20 @@
+<body>
+    <div class="main-block">
+        <form action="{{ url_for('predict') }}" method="post">
+            <h1><b>Exam Result Prediction</b></h1>
+            <p>Enter your sleep and study time to predict the probability of passing (Pass or Fail).</p>
+            <div class="info">
+                <label for="SleepTime"><i>Sleep time (hours/day)</i></label>
+                <input type="number" id="SleepTime" name="SleepTime" placeholder="Enter sleep time in hours/day" required>
+
+                <label for="StudyTime"><i>Study time (hours/day)</i></label>
+                <input type="number" id="StudyTime" name="StudyTime" placeholder="Enter study time in hours/day" required>
+            </div>
+            <button type="submit">Predict</button>
+            <div class="result">
+                <h2>Result</h2>
+                <p>{{ result }}</p>
+            </div>
+        </form>
+    </div>
+</body>

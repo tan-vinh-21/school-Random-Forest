@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dự đoán kết quả thi</title>
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      padding: 0;
+      margin: 0;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: seagreen;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-weight: 400;
+      color: seagreen;
+    }
+
+    label {
+      margin: 0 0 10px;
+      font-weight: 500;
+      color: red;
+      font-size: 12px;
+    }
+
+    .main-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 75vh;
+      background-image: url("static/img/background image.jpg");
+      background-size: cover;
+    }
+
+    form {
+      padding: 25px;
+      margin: 25px;
+      width: 50%;
+      box-shadow: 0 2px 5px #f5f5f5;
+      background: #f5f5f5;
+      border: 2px solid seagreen;
+      border-radius: 8px;
+    }
+
+    input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid seagreen;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #666;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: seagreen;
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    button:hover {
+      background: green;
+    }
+
+    @media screen and (max-width: 600px) {
+      form {
+        width: 90%;
+      }
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 2px solid seagreen;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px #f5f5f5;
+      text-align: center;
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-block">
+    <form action="{{ url_for('predict') }}" method="post">
+      <center>
+        <h1><b>Dự đoán kết quả thi</b></h1>
+        <p>Nhập thời gian ngủ và học để dự đoán kết quả (Đậu hoặc Rớt).</p>
+        <div class="info">
+          <label for="SleepTime"><i>Thời gian ngủ (giờ/ngày)</i></label>
+          <input type="number" name="SleepTime" placeholder="Nhập số giờ ngủ mỗi ngày" required>
+
+          <label for="StudyTime"><i>Thời gian học (giờ/ngày)</i></label>
+          <input type="number" name="StudyTime" placeholder="Nhập số giờ học mỗi ngày" required>
+        </div>
+      </center>
+      <button type="submit">Dự đoán</button>
+      <div class="result">
+        <h2>Kết quả</h2>
+        <p>{{ result }}</p>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
